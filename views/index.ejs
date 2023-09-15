@@ -1,0 +1,32 @@
+<%- include("partials/header.ejs") %>
+    <div class="box" id="heading">
+        <h1>
+            <% var curDate="" ; switch( new Date().getDay()) { case 0: curDate +="Sunday, " ; break; case 1: curDate
+                +="Monday, " ; break; case 2: curDate +="Tuesday, " ; break; case 3: curDate +="Wednesday, " ; break;
+                case 4: curDate +="Thursday, " ; break; case 5: curDate +="Friday, " ; break; case 6: curDate
+                +="Sunday, " ; break; default: break; } switch( new Date().getMonth()) { case 0: curDate +="January " ;
+                break; case 1: curDate +="February " ; break; case 2: curDate +="March " ; break; case 3: curDate
+                +="April " ; break; case 4: curDate +="May " ; break; case 5: curDate +="June " ; break; case 6: curDate
+                +="July " ; break; case 7: curDate +="August " ; break; case 8: curDate +="September " ; break; case 9:
+                curDate +="October" ; break; case 10: curDate +="November " ; break; case 11: curDate +="Decemmber " ;
+                break; default: break; } curDate +=new Date().getDate(); %>
+                <%= curDate %>
+        </h1>
+    </div>
+
+    <div class="box">
+
+        <% if(locals.lItems){ for(i=0; i < lItems.length ; i++) { %>
+            <div class="item">
+                <input type="checkbox">
+                <p>
+                    <%= lItems[i] %>
+                </p>
+            </div>
+            <% } } else { console.log("asdasd");}%>
+                <form class="item" action="/" method="post">
+                    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                    <button type="submit" name="list">+</button>
+                </form>
+    </div>
+    <%- include("partials/footer.ejs") %>
